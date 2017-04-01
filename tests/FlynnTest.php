@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-
 final class FlynnTest extends TestCase {
 
     protected $config;
@@ -9,7 +8,6 @@ final class FlynnTest extends TestCase {
     {
         require('config.php');
         $this->config = $config;
-        $this->flynn = new Flynn();
     }
 
 
@@ -125,14 +123,20 @@ final class FlynnTest extends TestCase {
         $this->assertArrayHasKey("NODE",$application->getEnvs());
     }
 
-    public function testCanDestroyAnApplication()
+    /*
+     * Can delete an application
+     */
+    public function testCanDeleteAnApplication()
     {
         $cluster = new Cluster($this->config);
         $application = $cluster->application("myapp");
         $this->assertTrue($application->delete());
     }
 
-    public function testCanUnSubscribeACluster()
+    /*
+     * Can disconnect from a cluster
+     */
+    public function testCanDisconnectFromACluster()
     {
         $cluster = new Cluster($this->config);
         $cluster->disconnect();

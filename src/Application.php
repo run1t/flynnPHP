@@ -23,7 +23,7 @@ class Application
     }
 
     public function create(){
-        $ret = Helpers::exec("flynn -c " . $this->clusterName . " create " . $this->name );
+        $ret = Helpers::exec("flynn -c " . $this->clusterName . " create -y " . $this->name );
         if (Helpers::contains($ret, "already exist")) {
             throw new Exception("The app '" . $this->name . "' already exist.");
         }
