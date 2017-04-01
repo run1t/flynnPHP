@@ -1,0 +1,14 @@
+{
+    "name": "reunan/flynn-php",
+    "require": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlynnPHP\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "watch phpunit --verbose --bootstrap src/autoload.php tests"
+    }
+}
