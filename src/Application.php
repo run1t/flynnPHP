@@ -11,6 +11,8 @@ class Application
     private $name;
     private $clusterName;
     private $created;
+    private $justCreated;
+
     public function __construct($name, $clusterName)
     {
         $this->name = $name;
@@ -18,6 +20,9 @@ class Application
 
         if(!$this->itExist()){
             $this->create();
+            $this->justCreated = true;
+        }else{
+            $this->justCreated = false;
         }
         $this->created = true;
     }
@@ -71,6 +76,10 @@ class Application
 
     public function isCreated(){
         return $this->created;
+    }
+
+    public function isJustCreated(){
+        return $this->justCreated;
     }
 
     public function addMysqlProvider(){

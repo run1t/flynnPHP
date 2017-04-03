@@ -51,6 +51,18 @@ final class FlynnTest extends TestCase {
     }
 
     /*
+     * Can create an existing application
+     */
+    public function testCanSeeIfAnAppIsJustCreated()
+    {
+        $cluster = new Cluster($this->config);
+        $application = $cluster->application("myapp");
+        $application->delete();
+        $application = $cluster->application("myapp");
+        $this->assertTrue($application->isJustCreated());
+    }
+
+    /*
      * Can create an a mysql provider
      */
     public function testCanCreateAMysqlProvider()
